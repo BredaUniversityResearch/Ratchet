@@ -1,30 +1,22 @@
 <?php
 namespace Ratchet\Server;
 use Ratchet\ConnectionInterface;
-use Ratchet\WebSocket\ReactConnection;
+use React\Socket\ConnectionInterface as ReactConn;
 
 /**
  * {@inheritdoc}
  */
 class IoConnection implements ConnectionInterface {
     /**
-     * @var ReactConnection
+     * @var \React\Socket\ConnectionInterface
      */
     protected $conn;
-	/**
-	 * Explicitly define properties to prevent dynamic property deprecation notices
-	 */
-	public $resourceId;
-	public $remoteAddress;
-	public $httpHeadersReceived;
-	public $httpBuffer;
-	public $httpRequest;
-	public $WebSocket;
+
 
     /**
-     * @param ReactConnection $conn
+     * @param \React\Socket\ConnectionInterface $conn
      */
-    public function __construct(ReactConnection $conn) {
+    public function __construct(ReactConn $conn) {
         $this->conn = $conn;
     }
 
